@@ -13,11 +13,11 @@ class Reports
 
     public function getUsers()
     {
-        $this->db->querry("SELECT DISTINCT * 
+        $this->db->querry("SELECT  profile_name, views.profile_id as id, SUM(views) as viewsc
         FROM profiles
         LEFT JOIN views
-        ON views.profile_id = profiles.profile_id
-        ORDER BY profile_name ASC");
+        ON profiles.profile_id = views.profile_id
+        GROUP BY profiles.profile_name");
 
         //Assign the results SET
         $results = $this->db->resultsSet();
