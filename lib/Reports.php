@@ -48,7 +48,7 @@ class Reports
         FROM views RIGHT JOIN profiles
         ON views.profile_id = profiles.profile_id
         WHERE profiles.profile_id = :profile_id
-        ORDER BY date DESC
+        ORDER BY date ASC
          ');
 
         $this->db->bind(':profile_id', $profile_id);
