@@ -27,6 +27,34 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+
+
+                <table class="table table-striped">
+                    <thead> 
+                        <tr>
+                            <th>name</th>
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mart</th>
+                            <th>April</th>  
+                            <th>May</th>
+                            <th>Jun</th>
+                            <th>Jul</th>
+                            <th>August</th>
+                            <th>Sept</th>
+                            <th>OCt</th>
+                            <th>Nov</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($reports as $report) : ?>
+                        <tr>
+                            <td><?php echo $report->profile_name; ?></td>
+                            <td><?php echo $report->id; ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
             <div>
 

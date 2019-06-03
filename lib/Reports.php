@@ -76,4 +76,37 @@ class Reports
 
         return $results;
     }
+
+  
+    // THIS funtion should serve us with every month per user data the querry is correct for one month
+    // I wanted to get all months from Jan to Dec by utilizing an array trough a foreach loop
+    // And as the optional paramater i declared $id which is the user profile_id
+
+    public function getPersonDistinctMonthly($id)
+    {
+        $id = $id;
+        $date = array(
+            1,2,3,4,5,6,7,8,9,10,11,12
+        );
+        foreach($date as $month){
+            $this->db->querry('SELECT  profile_name, sum(views) as viewsm
+            FROM profiles
+            LEFT JOIN views
+            ON profiles.profile_id = views.profile_id
+            WHERE MONTH(date) = :month AND WHERE profiles.profile_id = ;id
+         ');
+
+        $this->db->bind(':month', $month);
+        $this->db->bind(':id', $id);
+
+          // Assign the row
+          $row = $this->db->single();
+
+          return $row;
+          print_r($row);
+        }
+    }
+
+
+
 }
