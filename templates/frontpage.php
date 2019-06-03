@@ -4,7 +4,7 @@
 
     
       <div class="row marketing">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <table class="table table-striped">
                     <thead> 
                         <tr>
@@ -20,7 +20,7 @@
                             <td><?php echo $report->profile_name; ?></td>
                             <td><?php if (!empty($report->date)) {echo $report->date;} else { echo 'No data available';} ?></td>
                             <td><?php if (!empty($report->views)) {echo $report->views;} else { echo 'No data available';} ?></td>
-                        <td><a href="report.php?id=<?php echo $report->profile_id ?>" class="btn btn-default">View</a></td>
+                        <td><a href="report.php?id=<?php echo $report->profile_id ?>" class="btn btn-default <?php if (!empty($report->views)) {echo 'btn-success';} else { echo 'btn-danger disabled';} ?>">View</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
