@@ -6,6 +6,7 @@ $report = new Reports;
 $template = new Template('templates/frontpage.php');
 
 $template->title = "Yearly report";
-$template->reports = $report->getMonthly();
+$template->reports = $report->getUsers();
+
 
 echo $template;
