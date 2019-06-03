@@ -17,7 +17,7 @@ class Reports
         FROM profiles
         LEFT JOIN views
         ON views.profile_id = profiles.profile_id
-        ORDER BY date DESC");
+        ORDER BY profile_name ASC");
 
         //Assign the results SET
         $results = $this->db->resultsSet();
@@ -28,7 +28,21 @@ class Reports
 
     //Get a report
 
-    public function getPersonalMonthlyReport($profile_id)
+    public function getPersonRecord($profile_id)
+    {
+        $this->db->querry('SELECT *
+        FROM profiles
+        WHERE profile_id = :profile_id');
+
+        $this->db->bind(':profile_id', $profile_id);
+
+        // Assign the row
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getPersonMonthly($profile_id)
     {
         $this->db->querry('SELECT *
         FROM views RIGHT JOIN profiles
@@ -40,8 +54,8 @@ class Reports
         $this->db->bind(':profile_id', $profile_id);
 
         // Assign the row
-        $row = $this->db->single();
+        $results = $this->db->resultsSet();
 
-        return $row;
+        return $results;
     }
 }
