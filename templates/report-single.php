@@ -1,5 +1,6 @@
 <?php include 'inc/header.php' ?>
   <h2 class="page-header"><?php echo $views->profile_name; ?></h2>
+  <h2>Total yearly view count : <?php echo $viewcount->viewsc; ?> views</h2>
     <hr>
   
     <table class="table table-stripped">

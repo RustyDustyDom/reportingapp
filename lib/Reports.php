@@ -11,9 +11,9 @@ class Reports
 
     // Get all reports
 
-    public function getMonthly()
+    public function getUsers()
     {
-        $this->db->querry("SELECT *
+        $this->db->querry("SELECT DISTINCT * 
         FROM profiles
         LEFT JOIN views
         ON views.profile_id = profiles.profile_id
@@ -26,6 +26,7 @@ class Reports
     }
 
 
+
     //Get a report
 
     public function getPersonRecord($profile_id)
@@ -33,6 +34,23 @@ class Reports
         $this->db->querry('SELECT *
         FROM profiles
         WHERE profile_id = :profile_id');
+
+        $this->db->bind(':profile_id', $profile_id);
+
+        // Assign the row
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function viewSum($profile_id)
+    {
+        $this->db->querry('SELECT  SUM(views) as viewsc
+        FROM profiles
+        LEFT JOIN views
+        ON views.profile_id = profiles.profile_id
+        WHERE views.profile_id = :profile_id
+        ORDER BY profile_name ASC');
 
         $this->db->bind(':profile_id', $profile_id);
 
